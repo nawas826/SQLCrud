@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+<body>
+    <div>
+        <div>
+            <h1>Register</h1>
+        </div>
+        <table>
+            <form name='validation' onsubmit="return validate()" method="POST" action="/register">
+                <tr>
+                    <td>Name :</td>
+                    <td> <input type="text" name="name" placeholder="Enter your name"></td>
+                    <td id="nme"></td>
+                </tr>
+
+                <tr>
+                    <td>Email :</td>
+                    <td><input type="email" name="email" placeholder="Enter mail"></td>
+                    <td id="eml"></td>
+                </tr>
+                <tr>
+                    <td>Mobile Number :</td>
+                    <td> <input type="tel" name="phone" placeholder="Enter phone number"></td>
+                    <td id="mn"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password" placeholder="Enter password"></td>
+                    <td id="pd"></td>
+                </tr>
+                <tr id="pdr"></tr>
+                <tr>
+                    <td>Confirm Password:</td>
+                    <td> <input type="password" name="cpswd" placeholder="Confirm password"><br>
+                    </td>
+                    <td id="cpd"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <input id="sub" type="Submit" value="submit"></td>
+                </tr>
+            </form>
+
+        </table>
+    </div>
+    <script>
+        function validate() {
+            var fname = document.validation.name.value;
+            var fmail = document.validation.email.value;
+            var fmob = document.validation.phone.value;
+            var fpswd = document.validation.password.value;
+            var fcpswd = document.validation.cpswd.value;
+            
+            var namepattern = /([a-zA-Z\s]{3,})+/
+            if (fname == '') {
+                document.getElementById("nme").innerHTML = "Name can\'t be empty";
+                document.getElementById("nme").style.color = "red";
+                return false;
+            } else if (!namepattern.test(fname)) {
+                document.getElementById("nme").innerHTML = "Enter a valid name";
+                document.getElementById("nme").style.color = "red";
+            }
+            else if(fname != ''){
+                document.getElementById("nme").innerHTML = "";
+            }
+
+            var mailpattern = /^([a-zA-Z])+([a-zA-Z\.\_0-9])*\@([a-zA-Z])+\.(([a-zA-Z]+\.*){2,4})$/;
+            if (fmail == '') {
+                document.getElementById("eml").innerHTML = "Email can\'t be empty";
+                document.getElementById("eml").style.color = "red";
+                return false;
+            } else if (!mailpattern.test(fmail)) {
+                alert("Enter a valid email Id!");
+                document.getElementById("eml").style.color = "red";
+            }
+            else if(fmail != ''){
+                document.getElementById("eml").innerHTML = "";
+            }
+
+            var mobpattern = /\d{10}/;
+
+            if (fmob == '') {
+                document.getElementById("mn").innerHTML = "Mobile Number can\'t be empty";
+                document.getElementById("mn").style.color = "red";
+                return false;
+            } else if (!mobpattern.test(fmob)) {
+                document.getElementById("mn").innerHTML = "Enter a valid Mobile Number";
+                document.getElementById("mn").style.color = "red";
+            }
+            else if(fmob != ''){
+                document.getElementById("mn").innerHTML = "";
+            }
+
+            var pswdpattern = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+            if (fpswd == '') {
+                document.getElementById("pd").innerHTML = "Password can\'t be empty";
+                document.getElementById("pd").style.color = "red";
+                return false;
+            } else if (!pswdpattern.test(fpswd)) {
+               
+                document.getElementById("pdr").innerHTML = "Enter a valid password!<br>"+
+                "Must contain atleast 6 characters<br>Must contain atleast 1 upper case letter<br>"+
+                "Must contain atleast 1 lower case letter<br>Must contain atleast 1 number ";
+                document.getElementById("pdr").style.color = "red";
+                
+            }
+            else if(fpswd != ''){
+                document.getElementById("pdr").innerHTML = "";
+            }
+
+            if (fcpswd == '') {
+                document.getElementById("cpd").innerHTML = "Please confirm your password";
+                document.getElementById("cpd").style.color = "red";
+                return false;
+            } else if (fcpswd != fpswd) {
+                document.getElementById("cpd").innerHTML = "Please enter same as above";
+                document.getElementById("cpd").style.color = "red";
+            }
+            else if(fcpswd != ''){
+                document.getElementById("cpd").innerHTML = "";
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+

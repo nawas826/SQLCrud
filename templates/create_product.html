@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Product</title>
+</head>
+<body>
+    <h1>Create a Product</h1>
+    <div>
+        <form action="/product/creates" method="POST">
+            <table>
+                <tr>
+                    <td>Product Name</td>
+                    <td><input type="text" name="pname" id=""></td>
+                </tr>
+                <tr>
+                    <td>Product Code</td>
+                    <td><input type="number" name="pcode" id=""></td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td><input type="number" name="pprice" id=""></td>
+                </tr>
+                <tr>
+                    <td>Category</td>
+                    <td><select name="pcategory" id="">
+                        <option value="" disabled>Select a Catogery</option>
+                        <option value="mobile">Mobiles</option>
+                        <option value="laptop">Laptops</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
